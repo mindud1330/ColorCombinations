@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Color Circle</title>
+    <meta charset="UTF-8">
+
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- COLOR CIRCLE - COLOR SELECTOR -->
+        <div id="color_circle">
+            <div class="circle_container">
+                <div id="#FF0000" style="background-color: hsl(0, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(30deg);">
+                <div id="#FF8000" style="background-color: hsl(30, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(60deg);">
+                <div id="#FFFF00" style="background-color: hsl(60, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(90deg);">
+                <div id="#80FF00" style="background-color: hsl(90, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(120deg);">
+                <div id="#00FF00" style="background-color: hsl(120, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(150deg);">
+                <div id="#00FF80" style="background-color: hsl(150, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(180deg);">
+                <div id="#00FFFF" style="background-color: hsl(180, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(210deg);">
+                <div id="#0080FF" style="background-color: hsl(210, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(240deg);">
+                <div id="#0000FF" style="background-color: hsl(240, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(270deg);">
+                <div id="#8000FF" style="background-color: hsl(270, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(300deg);">
+                <div id="#FF00FF" style="background-color: hsl(300, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+            <div class="circle_container" style="transform: rotate(330deg);">
+                <div id="#FF0080" style="background-color: hsl(330, 100%, 50%);" onclick="colorSet(this)"></div>
+            </div>
+        </div>
+
+        <!-- COLOR HARMONY SELECTOR -->
+        <div class="option_container">
+            <button type="button" onclick="setComplementary()">
+                <img src="./img/Complementary.gif">
+                <figcaption>보색</figcaption>
+            </button>
+            <button type="button" onclick="setAnalogous()">
+                <img src="./img/Analogous.gif">
+                <figcaption>유사색</figcaption>
+            </button>
+            <button type="button" onclick="setSplitComplementary()">
+                <img src="./img/SplitComplementary.gif">
+                <figcaption>근접 보색</figcaption>
+            </button>
+            <button type="button" onclick="setTriad()">
+                <img src="./img/Triad.gif">
+                <figcaption>3색 조화</figcaption>
+            </button>
+            <button type="button" onclick="setTetradic(1)">
+                <img src="./img/Tetrad.gif">
+                <figcaption>이중 보색 1</figcaption>
+            </button>
+            <button type="button" onclick="setSquare()">
+                <img src="./img/Square.gif">
+                <figcaption>4색 조화</figcaption>
+            </button>
+            <button type="button" onclick="setTetradic(2)">
+                <img src="./img/Tetrad.gif">
+                <figcaption>이중 보색 2</figcaption>
+            </button>
+        </div>
+
+        <!-- COLOR RESULT -->
+        <div>
+            <p id="opt"><br></p>
+        </div>
+    </div>
+
+    <div class="color_container">
+        <div id="color01">
+            <p id="hex01"></p>
+            <p id="hsl01"></p>
+        </div>
+        <div id="color02">
+            <p id="hex02"></p>
+            <p id="hsl02"></p>
+        </div>
+        <div id="color03">
+            <p id="hex03"></p>
+            <p id="hsl03"></p>
+        </div>
+        <div id="color04">
+            <p id="hex04"></p>
+            <p id="hsl04"></p>
+        </div>
+        <div id="color05">
+            <p id="hex05"></p>
+            <p id="hsl05"></p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
