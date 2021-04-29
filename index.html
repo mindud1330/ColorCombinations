@@ -55,65 +55,109 @@
 
         <!-- COLOR HARMONY SELECTOR -->
         <div class="option_container">
-            <button type="button" onclick="setComplementary()">
+            <button class="option_item" type="button" onclick="setComplementary()">
                 <img src="./img/Complementary.gif">
                 <figcaption>보색</figcaption>
             </button>
-            <button type="button" onclick="setAnalogous()">
+            <button class="option_item" type="button" onclick="setAnalogous()">
                 <img src="./img/Analogous.gif">
                 <figcaption>유사색</figcaption>
             </button>
-            <button type="button" onclick="setSplitComplementary()">
+            <button class="option_item" type="button" onclick="setSplitComplementary()">
                 <img src="./img/SplitComplementary.gif">
                 <figcaption>근접 보색</figcaption>
             </button>
-            <button type="button" onclick="setTriad()">
+            <button class="option_item" type="button" onclick="setTriad()">
                 <img src="./img/Triad.gif">
                 <figcaption>3색 조화</figcaption>
             </button>
-            <button type="button" onclick="setTetradic(1)">
+            <button class="option_item" type="button" onclick="setTetradic(1)">
                 <img src="./img/Tetrad.gif">
                 <figcaption>이중 보색 1</figcaption>
             </button>
-            <button type="button" onclick="setSquare()">
+            <button class="option_item" type="button" onclick="setSquare()">
                 <img src="./img/Square.gif">
                 <figcaption>4색 조화</figcaption>
             </button>
-            <button type="button" onclick="setTetradic(2)">
+            <button class="option_item" type="button" onclick="setTetradic(2)">
                 <img src="./img/Tetrad.gif">
                 <figcaption>이중 보색 2</figcaption>
             </button>
+            <button class="option_item" type="button" onclick="setOneColor()">
+                단일색
+            </button>
+            
         </div>
+
+        <p id="opt"><br></p>
+        <button id="make_palette" type="button" onclick="setPalette()">팔레트 만들기</button>
 
         <!-- COLOR RESULT -->
         <div>
-            <p id="opt"><br></p>
-        </div>
-    </div>
+            
 
-    <div class="color_container">
-        <div id="color01">
-            <p id="hex01"></p>
-            <p id="hsl01"></p>
+            <div class="color_container">
+                <div id="color00">
+                    <p id="hex00"></p>
+                </div>
+                <div id="color01">
+                    <p id="hex01"></p>
+                    <p>기준색</p>
+                </div>
+                <div id="color02">
+                    <p id="hex02"></p>
+                </div>
+                <div id="color03">
+                    <p id="hex03"></p>
+                </div>
+                <div id="color04">
+                    <p id="hex04"></p>
+                </div>
+                <div id="color05">
+                    <p id="hex05"></p>
+                </div>
+            </div>
         </div>
-        <div id="color02">
-            <p id="hex02"></p>
-            <p id="hsl02"></p>
-        </div>
-        <div id="color03">
-            <p id="hex03"></p>
-            <p id="hsl03"></p>
-        </div>
-        <div id="color04">
-            <p id="hex04"></p>
-            <p id="hsl04"></p>
-        </div>
-        <div id="color05">
-            <p id="hex05"></p>
-            <p id="hsl05"></p>
-        </div>
-    </div>
 
+        <div class="palette_container">
+            <div class="palette_item" id="palette">
+                <div id=p0 onclick="indexSet(this)"></div>
+                <div id=p1 onclick="indexSet(this)"></div>
+                <div id=p2 onclick="indexSet(this)"></div>
+                <div id=p3 onclick="indexSet(this)"></div>
+                <div id=p4 onclick="indexSet(this)"></div>
+                <div id=p5 onclick="indexSet(this)"></div>
+                <div id=p6 onclick="indexSet(this)"></div>
+            </div>
+            
+            <div class="palette_item">
+                <!-- <button type="button" onclick="setPalette()">팔레트 만들기</button> -->
+                <button type="button" onclick="setPalette(1)">따뜻한 밝은색<br>차가운 어두운색</button>
+                <button type="button" onclick="setPalette(2)">차가운 밝은색<br>따뜻한 어두운색</button>
+                <button type="button" onclick="setPalette(3)">전체 채도 증가</button>
+                <button type="button" onclick="setPalette(4)">전체 채도 감소</button>
+                <button type="button" onclick="setPalette(5)">순차적 채도 조절</button>
+                <div>
+                    <button type="button" onclick="setPalette(6)">보색 변환</button>
+                    <p id="indexIs" style="display: inline;"> : p </p>
+                </div>
+            </div>
+            
+            <div class="palette_item">
+                <button class="print" type="button" onclick="printPalette(1)">HEX code</button>
+                <button class="print" type="button" onclick="printPalette(2)">RGB code</button>
+                
+                <p id="colorCode"></p>
+            </div>
+
+        </div>
+
+        <div></div>
+        <div>
+            <p id="warning"></p>
+        </div>
+
+    </div>
 
 </body>
 

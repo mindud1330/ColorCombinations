@@ -1,19 +1,30 @@
 function HEXtoHSL(hex) {
-    var rgb = ["", "", ""];
+    var rgb = HEXtoRGB(hex);
+    var hsl = RGBtoHSL(rgb[0], rgb[1], rgb[2]);
+    return hsl;
+}
 
+function HSLtoHEX(hsl) {
+    var rgb = HSLtoRGB(hsl[0], hsl[1], hsl[2]);
+    var hex = RGBtoHEX(rgb);
+    return hex.toUpperCase();
+}
+
+function hslToString(h, s, l) {
+    h = Math.round(h * 360) % 360; // degree
+    s = Math.round(s * 100); // %
+    l = Math.round(l * 100); // %
+    var result = "hsl(" + h + "," + s + "%," + l + "%)";
+    return result;
+}
+
+function HEXtoRGB (hex) {
+    var rgb = Array(3);
     rgb[0] = parseInt(hex.substr(1, 2), 16);
     rgb[1] = parseInt(hex.substr(3, 2), 16);
     rgb[2] = parseInt(hex.substr(5, 2), 16);
 
-    var hsl = RGBtoHSL(rgb[0], rgb[1], rgb[2]);
-    hsl[0] = Math.round(hsl[0] * 360); // degree
-    hsl[1] = Math.round(hsl[1] * 100); // %
-    hsl[2] = Math.round(hsl[2] * 100); // %
-
-    var result = "hsl(" + hsl[0] + "," + hsl[1] + "%," + hsl[2] + "%";
-
-    return result;
-
+    return rgb;
 }
 
 function RGBtoHSL(r, g, b) {
@@ -66,13 +77,13 @@ function HSLtoRGB(h, s, l) {
         b = hue2rgb(p, q, h - 1 / 3);
     }
 
-    return [r * 255, g * 255, b * 255];
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
 function RGBtoHEX(rgb) {
     var id = "#"
     for (var i = 0; i < rgb.length; i++) {
-        rgb[i] = Math.round(rgb[i]);
+        //rgb[i] = Math.round(rgb[i]);
         if (rgb[i] < 10) {
             rgb[i] = "0" + rgb[i].toString(16);
         }
@@ -83,5 +94,6 @@ function RGBtoHEX(rgb) {
         id += rgb[i];
     }
 
-    return id;
+    return id.toUpperCase();
 }
+
