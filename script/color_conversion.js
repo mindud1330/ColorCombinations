@@ -84,7 +84,7 @@ function RGBtoHEX(rgb) {
     var id = "#"
     for (var i = 0; i < rgb.length; i++) {
         //rgb[i] = Math.round(rgb[i]);
-        if (rgb[i] < 10) {
+        if (rgb[i] < 16) {
             rgb[i] = "0" + rgb[i].toString(16);
         }
         else {

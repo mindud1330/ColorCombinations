@@ -1,8 +1,20 @@
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+* {
+    font-family: 'Jeju Gothic', sans-serif;
+}
+
+header {
+    font-size: large;
+    background: aquamarine;
+    padding: 4pt;
+    grid-column: 1 / 3;
+}
+
 .container {
     display: grid;
     grid-template-columns: 450px 250px;
     ;
-    grid-template-rows: 420px auto;
+    grid-template-rows: 30px 420px auto;
 }
 
 #color_circle {
@@ -16,7 +28,7 @@
     display: flex;
     width: 80px;
     height: 200px;
-    top: 20px;
+    top: 50px;
     left: 190px;
     transform-origin: bottom;
 }
@@ -93,11 +105,27 @@ p {
 }
 
 .palette_item:nth-child(2)>button {
-    width: 110px;
+    width: 100px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.setP {
+    background-color: lightblue;
+    border-width: thin;
+    border-radius: 5px;
+}
+
+#indexIs {
+    font-family: monospace;
+    font-weight: bold;
+    color: steelblue;
+    text-align: center;
+    margin-bottom: 3px;
 }
 
 .print {
-    width: 65px;
+    width: 75px;
     background-color: lightcoral;
 }
 
@@ -105,12 +133,27 @@ p {
     width: 60px;
     height: 120px;
     padding: 6px 2pt;
+    font-family: monospace;
     font-size: 11pt;
     text-align: left;
 }
 
 #warning {
-    grid-column: 1 / 3;
     color: rgb(225, 0, 0);
     font-size: 11pt;
+}
+
+#help_btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    padding: 2px;
+    background: black;
+    color: white;
+    text-align: center;
+    font-size: 12pt;
+}
+
+#help {
+    font-size: 10pt;
 }

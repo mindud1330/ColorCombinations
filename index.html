@@ -12,7 +12,9 @@
 </head>
 
 <body>
+
     <div class="container">
+        <header>Color Palette Maker</header>
         <!-- COLOR CIRCLE - COLOR SELECTOR -->
         <div id="color_circle">
             <div class="circle_container">
@@ -86,38 +88,37 @@
             <button class="option_item" type="button" onclick="setOneColor()">
                 단일색
             </button>
-            
+
         </div>
 
         <p id="opt"><br></p>
         <button id="make_palette" type="button" onclick="setPalette()">팔레트 만들기</button>
 
         <!-- COLOR RESULT -->
-        <div>
-            
 
-            <div class="color_container">
-                <div id="color00">
-                    <p id="hex00"></p>
-                </div>
-                <div id="color01">
-                    <p id="hex01"></p>
-                    <p>기준색</p>
-                </div>
-                <div id="color02">
-                    <p id="hex02"></p>
-                </div>
-                <div id="color03">
-                    <p id="hex03"></p>
-                </div>
-                <div id="color04">
-                    <p id="hex04"></p>
-                </div>
-                <div id="color05">
-                    <p id="hex05"></p>
-                </div>
+        <div class="color_container">
+            <div id="color00">
+                <p id="hex00"></p>
             </div>
+            <div id="color01">
+                <p id="hex01"></p>
+                <p>기준색</p>
+            </div>
+            <div id="color02">
+                <p id="hex02"></p>
+            </div>
+            <div id="color03">
+                <p id="hex03"></p>
+            </div>
+            <div id="color04">
+                <p id="hex04"></p>
+            </div>
+            <div id="color05">
+                <p id="hex05"></p>
+            </div>
+
         </div>
+
 
         <div class="palette_container">
             <div class="palette_item" id="palette">
@@ -129,34 +130,37 @@
                 <div id=p5 onclick="indexSet(this)"></div>
                 <div id=p6 onclick="indexSet(this)"></div>
             </div>
-            
+
             <div class="palette_item">
                 <!-- <button type="button" onclick="setPalette()">팔레트 만들기</button> -->
                 <button type="button" onclick="setPalette(1)">따뜻한 밝은색<br>차가운 어두운색</button>
                 <button type="button" onclick="setPalette(2)">차가운 밝은색<br>따뜻한 어두운색</button>
                 <button type="button" onclick="setPalette(3)">전체 채도 증가</button>
                 <button type="button" onclick="setPalette(4)">전체 채도 감소</button>
-                <button type="button" onclick="setPalette(5)">순차적 채도 조절</button>
-                <div>
-                    <button type="button" onclick="setPalette(6)">보색 변환</button>
-                    <p id="indexIs" style="display: inline;"> : p </p>
-                </div>
+                <button id="satcon" type="button" onclick="setPalette(5)">순차적 채도 조절</button>
+                <div id="indexIs">----- P -----</div>
+                <button class="setP" type="button" onclick="setPalette(6)">보색 변환</button>
+                <button class="setP" type="button" onclick="setPalette(7)">채도 증가</button>
+
             </div>
-            
+
             <div class="palette_item">
-                <button class="print" type="button" onclick="printPalette(1)">HEX code</button>
-                <button class="print" type="button" onclick="printPalette(2)">RGB code</button>
-                
+                <button class="print" type="button" onclick="printPalette(1)">HEX<br>code</button>
+                <button class="print" type="button" onclick="printPalette(2)">RGB<br>code</button>
+
                 <p id="colorCode"></p>
             </div>
 
         </div>
 
-        <div></div>
+        
         <div>
-            <p id="warning"></p>
+            <button id="help_btn" type="button" onclick="support()">?</button>
+            <span id="help"></span>
         </div>
-
+        <p id="warning"></p>
+        
+        
     </div>
 
 </body>

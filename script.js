@@ -2,7 +2,7 @@ var thisColor = -1;
 var indexNow = -1;
 var option = 0;
 /*
-    -1 One Color
+    -1 Monochromatic
     0 Complementary
     1 Split-Complementary
     2 Tetradic-1
@@ -41,7 +41,8 @@ function colorSet(target) {
 
 function indexSet(target) {
     indexNow = target.id;
-    document.getElementById("indexIs").innerHTML = ": " + indexNow;
+    indexNow = parseInt(indexNow.replace(/[^0-9]/g, ''));
+    document.getElementById("indexIs").innerHTML = "----- " + indexNow + " -----";
 }
 
 function setPalette(type) {
@@ -58,20 +59,28 @@ function setPalette(type) {
         case 3: // 전체 채도 증가 (+10%)
         case 4: // 전체 채도 감소 (-10%)
         case 5: // 순차적 채도 감소 (중간색에서 멀어질수록 채도 감소)
-            saturationControl(type - 3); break;
+            saturationControl(type - 3, indexNow);
+            break;
         case 6: // 선택한 색 보색 변환
             if (indexNow == -1) {
-                document.getElementById("warning").innerHTML = "선택된 색이 없습니다.";
+                document.getElementById("warning").innerHTML = "※ 선택된 색이 없습니다.";
                 break;
             }
-            var i = parseInt(indexNow.replace(/[^0-9]/g, ''));
-            complementaryConvert(i); break;
+            complementaryConvert(indexNow); break;
+        case 7: // 선택한 색의 채도 증가
+            if (indexNow == -1) {
+                document.getElementById("warning").innerHTML = "※ 선택된 색이 없습니다.";
+                break;
+            }
+            saturationUP(indexNow);
+            break;
     }
-    
+
     // clear color code
     document.getElementById("colorCode").innerHTML = "";
 }
 
+/* 단일색 */
 function setOneColor() {
     reset("00"); reset("02"); reset("03"); reset("04"); reset("05");
 
@@ -208,4 +217,8 @@ function resetColor(opt) {
 function reset(num) {
     document.querySelector("#color" + num).style.background = "#FFFFFF";
     document.querySelector("#hex" + num).innerHTML = "";
+}
+
+function support() {
+    document.getElementById("help").innerHTML = "사용법.(추가 예정...)";
 }

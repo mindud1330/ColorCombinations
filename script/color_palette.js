@@ -246,33 +246,50 @@ function brightnessControl(baseColor, type) {
 
 /*  *** 채도 조절 ***
     0,1-type3, 4 전체 채도 조절: 행마다 10% 증가/감소
-    2-type5 순차적 채도 조절: 중간색은 높은 채도 / 밖으로 갈수록 낮은 채도 */
-function saturationControl(type) {
-    if (type == 2) {
-        for (var i = 1; i <= 3; i++) {
-            saturation[3 - i] = saturation[3 - i] - 0.1 * i;
-            saturation[3 + i] = saturation[3 + i] - 0.1 * i;
+    2-type5 순차적 채도 조절: 선택한 색은 높은 채도 / 밖으로 갈수록 낮은 채도 */
+function saturationControl(type, index) {
+    var i;
+    if (type == 2) { // 순차적 채도 조절
+        if (index === undefined || indexNow == -1) { // 중간색을 기준으로
+            for (i = 1; i <= 3; i++) {
+                saturation[3 - i] = saturation[3 - i] - 0.1 * i;
+                saturation[3 + i] = saturation[3 + i] - 0.1 * i;
+            }
         }
-        for (var i = 0; i < 7; i++) {
-            palette[i] = hslToString(hue[i], saturation[i], lightness[i]);
-            document.querySelector("#p" + i).style.background = palette[i];
+        else { // 선택한 색을 기준으로
+            for (i = 0; i < index; i++) {
+                saturation[i] = saturation[i] - 0.1 * (index - i);
+            }
+            for (i = index + 1; i < 7; i++) {
+                saturation[i] = saturation[i] - 0.1 * (i - index);
+            }
         }
     }
-    else {
+    else { // 전체 채도 조절
         var x = 1;
-        if (type) {
+        if (type) { 
             x = -1;
             if (saturation[3] < 0.1) {
-                document.getElementById("warning").innerHTML = "더이상 낮출 수 없어요.";
+                document.getElementById("warning").innerHTML = "※ 더이상 낮출 수 없어요.";
                 return;
             }
         }
-        for (var i = 0; i < 7; i++) {
-            saturation[i] += 0.1 * x;
-            palette[i] = hslToString(hue[i], saturation[i], lightness[i]);
-            document.querySelector("#p" + i).style.background = palette[i];
-        }
+
+        for (i = 0; i < 7; i++) saturation[i] += 0.1 * x;
+
     }
+
+    for (i = 0; i < 7; i++) {
+        palette[i] = hslToString(hue[i], saturation[i], lightness[i]);
+        document.querySelector("#p" + i).style.background = palette[i];
+    }
+}
+
+function saturationUP(index) {
+    saturation[index] += 0.1;
+
+    palette[index] = hslToString(hue[index], saturation[index], lightness[index]);
+    document.querySelector("#p" + index).style.background = palette[index];
 }
 
 /*  *** 보색 변환 ***
@@ -283,6 +300,7 @@ function complementaryConvert(index) {
     palette[index] = hslToString(hue[index], saturation[index], lightness[index]);
     document.querySelector("#p" + index).style.background = palette[index];
 }
+
 
 function whichNum(a, b) {
     if (Math.floor(Math.random() + 0.5)) return a;
